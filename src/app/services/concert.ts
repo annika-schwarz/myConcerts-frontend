@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Concert } from '../models/concert.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root',   // macht den Service in der gesamten Anwendung verfügbar & alle Seiten bekommen automatisch Änderungen mit, ohne neuladen zu müssen (durch signal)
 })
 export class ConcertService {
 
@@ -16,24 +16,25 @@ export class ConcertService {
   // schreibgeschützte Version des Signals, die nur gelesen werden kann
   allConcerts = this.concerts.asReadonly();
 
-  constructor() {
-    this.loadConcerts();
+  constructor() {   // Schlüsselwort constructor in TS/JS, wird genau 1x ausgeführt (und damit Methode loadConcerts)),
+      this.loadConcerts();    // wenn neue Instanz (ein Objekt) dieser Klasse erzeugt wird (= beim Starten der App)
   }
 
   // Methode zum Abrufen aller Konzerte im Backend
   loadConcerts(): void {
     this.http.get<Concert[]>(this.apiUrl).subscribe({   // http-GET-Anfrage an Backend-URL, die als Concerts[] typisiert ist, die durch .subscribe() abgeschickt wird
       // Wenn erfolgreiche Antwort (200 OK etc.) vom Backend
-      next: (data) => {     // data = vom Backend gesendete JSON-Daten (Concert[])
+      next: (data) => {     // next=callback-Funktion, data=vom Backend gesendete JSON-Daten (Concert[]-Objekt)
         console.log('Daten erfolgreich empfangen:', data);
         this.concerts.set(data);    // this.concerts enthält nun alle Konzerte vom Backend
       },
       // wenn Anfrage fehlschlägt
-      error: (err) => {   // err = HttPErrorResponse-Objekt mit Eigenschaften
+      error: (err) => {   // error=callback-Funktion, err=HttPErrorResponse-Objekt mit Eigenschaften
         console.error('Fehler bei der HTTP-Anfrage:', err);   // gibt alle Infos des Error-Objekts aus
       },
-      complete: () => {
-        console.log('HTTP-Anfrage ist abgeschllossen.');
+      // sagt, wenn Vorgang abgeschlossen und nicht z.B. immer nach am suchen der Daten ist
+      complete: () => {   // complete=callback-Funktion
+        console.log('HTTP-Anfrage ist abgeschlossen.');
       }
     });
   } 

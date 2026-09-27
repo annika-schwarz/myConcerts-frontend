@@ -35,7 +35,7 @@ export class HomeComponent {
       list = list.filter(c => 
         c.artist.toLowerCase().includes(query) ||
         (c.supportActs && c.supportActs.toLowerCase().includes(query)) ||
-        c.venue.toLowerCase().includes(query)
+        c.venue?.toLowerCase().includes(query)
       );
     }
 
