@@ -26,7 +26,7 @@ export class ConcertService {
       // Wenn erfolgreiche Antwort (200 OK etc.) vom BE
       next: (data) => {     // next=callback-Funktion, data=vom BE gesendete JSON-Daten (Concert[]-Objekt)
         console.log('HTTP-Anfrage erfolgreich und Daten erfolgreich vom Backend empfangen:', data);
-        this.concerts.set(data);    // this.concerts enthält nun alle Konzerte vom Backend
+        this.concerts.set(data);    // signal this.concerts enthält nun alle Konzerte vom Backend
       },
       // wenn Anfrage fehlschlägt
       error: (err) => {   // error=callback-Funktion, err=HttPErrorResponse-Objekt mit Eigenschaften
@@ -52,19 +52,20 @@ export class ConcertService {
 
   // Methode zum Hinzufügen eines neuen Konzerts zum Signal
   addConcert(concertData: Omit<Concert, 'id'| 'isPast'>): void {  // Utility Type Omit kreiert einen neuen Typ, der alle Eigenschaften von Concert enthält, außer 'id' und 'isPast'
-    const today = new Date().toISOString().split('T')[0];         // aktuelles Datum im Format YYYY-MM-DD
-
-    const newConcert: Concert = {
-      ...concertData,
-      id: crypto.randomUUID(), // Generierung einer eindeutigen ID für das neue Konzert
-      isPast: concertData.date < today // Bestimmung, ob das Konzert in der Vergangenheit liegt
-    };
-
-    this.concerts.update(currentConcerts => [...currentConcerts, newConcert]); // Hinzufügen des neuen Konzerts zum Signal durch Erstellen eines neuen Arrays, das alle aktuellen Konzerte und das neue Konzert enthält
+    this.http.post<Concert>(this.apiUrl, concertData).subscribe({
+      // Wenn erfolgreiche Antwort (200 OK etc.) vom BE
+      next: (savedConcert) => {     //savedConcert=vom BE gesendete JSON-Daten (gespeichertes Concert[]-Objekt)
+        console.log('Konzert erfolgreich gespeichert:', savedConcert);
+        this.concerts.update(currentConcerts => [...currentConcerts, savedConcert]);   //entpacke (=...) aktuelles Concert-Array und hänge gespeichertes Konzert an, update signal concerts mit diesem neuen Array
+      },
+      // wenn Fehler
+      error: (err) => {
+        console.log('Fehler beim Hinzufügen des Konzerts:', err);
+      }
+    });
   }
 
-
-  // Methode zum Abrufen eines Konzerts anhand der ID
+  // Methode zum Abrufen eines Konzerts anhand der ID (ohne HTTP-Anfrage)
   getConcertById(concertID: string): Concert | undefined {
     return this.concerts().find(concert => concert.id === concertID);
   }
