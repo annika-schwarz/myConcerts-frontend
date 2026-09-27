@@ -1,10 +1,11 @@
 import { Component, effect, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Concert } from '../../models/concert.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-concert-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './concert-form.html',
   styleUrl: './concert-form.css',
 })

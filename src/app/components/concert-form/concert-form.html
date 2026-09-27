@@ -20,26 +20,26 @@
 
   <!-- Vorbands (Support Acts) -->
   <div class="mb-3">
-    <label for="supportActs" class="form-label">Support Acts (Optional)</label>
+    <label for="supportActs" class="form-label">Support Acts</label>
     <input 
       type="text" 
       id="supportActs" 
       formControlName="supportActs" 
       class="form-control"
-      placeholder="z. B. Grandson, Dead Sara" 
+      placeholder="z. B. Spiritbox, Poppy" 
     />
   </div>
 
   <div class="row">
     <!-- Veranstaltungsort (Venue) -->
     <div class="col-md-6 mb-3">
-      <label for="venue" class="form-label fw-bold">Veranstaltungsort (optional)</label>
+      <label for="venue" class="form-label">Veranstaltungsort</label>
       <input 
         type="text" 
         id="venue" 
         formControlName="venue" 
         class="form-control"
-        placeholder="z. B. Olympiastadion Berlin" 
+        placeholder="z. B. Columbiahalle Berlin" 
       />
     </div>
 
@@ -65,19 +65,29 @@
     <!-- Bewertung (Rating 1-5) -->
     <div class="col-md-4 mb-3">
       <label for="rating" class="form-label">Bewertung (1 - 5 Sterne)</label>
-      <select 
-        id="rating" 
-        formControlName="rating" 
-        class="form-select"
-        [class.is-invalid]="concertForm.controls.rating.touched && concertForm.controls.rating.invalid"
-      >
-        <option [ngValue]="null">Keine Bewertung</option>
-        <option [ngValue]="1">1 Stern ⭐</option>
-        <option [ngValue]="2">2 Sterne ⭐⭐</option>
-        <option [ngValue]="3">3 Sterne ⭐⭐⭐</option>
-        <option [ngValue]="4">4 Sterne ⭐⭐⭐⭐</option>
-        <option [ngValue]="5">5 Sterne ⭐⭐⭐⭐⭐</option>
-      </select>
+      <!-- Bewertung (Interaktive Sterne) -->
+<div class="mb-3">  
+  <div class="star-rating-input d-flex gap-2 align-items-center">
+    @for (star of [1, 2, 3, 4, 5]; track star) {
+      <span 
+        class="star-icon fs-3 cursor-pointer"
+        [class.active]="(concertForm.get('rating')?.value || 0) >= star"
+        (click)="concertForm.get('rating')?.setValue(star)">
+        ★
+      </span>
+    }
+    
+    <!-- Button zum Zurücksetzen der Sterne -->
+    @if (concertForm.get('rating')?.value) {
+      <button 
+        type="button" 
+        class="btn btn-link text-white-50 text-decoration-none btn-sm ms-2"
+        (click)="concertForm.get('rating')?.setValue(null)">
+        Löschen
+      </button>
+    }
+  </div>
+</div>
       @if (concertForm.controls.rating.touched && concertForm.controls.rating.invalid) {
         <div class="invalid-feedback">
           Bewertung muss zwischen 1 und 5 liegen.
@@ -99,7 +109,13 @@
   </div>
 
   <!-- Submit & Abbrechen Buttons -->
-  <div class="d-flex gap-2 justify-content-end mt-3">
+  <div class="d-flex gap-2 justify-content-end mt-4 pt-3 border-top border-white-10">
+    <!-- Abbrechen-Button -->
+    <a routerLink="/" class="btn btn-outline-glass">
+      Abbrechen
+    </a>
+
+    <!-- Speichern-Button -->
     <button 
       type="submit" 
       class="btn btn-primary" 

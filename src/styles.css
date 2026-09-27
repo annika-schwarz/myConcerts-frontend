@@ -176,3 +176,24 @@ body {
   color: #10b981 !important;
   text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); /* Sanfter Glow-Effekt für die Zahl */
 }
+
+/* Interaktive Sternauswahl im Formular */
+.star-rating-input .star-icon {
+  color: rgba(255, 255, 255, 0.2); /* Inaktiv: Dezent/Dunkel */
+  transition: color 0.15s ease, transform 0.15s ease, text-shadow 0.15s ease;
+  user-select: none;
+}
+
+/* Hover- & Aktiv-Zustand: Neongrün mit Glow */
+.star-rating-input .star-icon:hover,
+.star-rating-input .star-icon.active {
+  color: #10b981 !important; /* Exakt dein Emerald-Neongrün */
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+  transform: scale(1.15);
+}
+
+.star-rating-input .star-icon:hover ~ .star-icon {
+  color: rgba(255, 255, 255, 0.2) !important;
+  text-shadow: none;
+  transform: scale(1);
+}
