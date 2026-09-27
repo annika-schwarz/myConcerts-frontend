@@ -29,7 +29,7 @@ export class ConcertFormComponent {
   concertForm = this.formbuilder.nonNullable.group({
     artist: ['', Validators.required],
     supportActs: [''],
-    venue: ['', Validators.required],
+    venue: [''],
     date: ['', Validators.required],
     rating: [null as number | null, [Validators.min(1), Validators.max(5)]], // min und max für die Bewertung
     comment: ['']

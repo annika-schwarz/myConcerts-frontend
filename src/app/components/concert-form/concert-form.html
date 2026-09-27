@@ -33,20 +33,14 @@
   <div class="row">
     <!-- Veranstaltungsort (Venue) -->
     <div class="col-md-6 mb-3">
-      <label for="venue" class="form-label fw-bold">Veranstaltungsort *</label>
+      <label for="venue" class="form-label fw-bold">Veranstaltungsort (optional)</label>
       <input 
         type="text" 
         id="venue" 
         formControlName="venue" 
         class="form-control"
-        [class.is-invalid]="concertForm.controls.venue.touched && concertForm.controls.venue.invalid"
         placeholder="z. B. Olympiastadion Berlin" 
       />
-      @if (concertForm.controls.venue.touched && concertForm.controls.venue.invalid) {
-        <div class="invalid-feedback">
-          Bitte gib einen Veranstaltungsort an.
-        </div>
-      }
     </div>
 
     <!-- Datum (Date) -->
