@@ -3,10 +3,11 @@ import { ConcertService } from '../../services/concert'; // Import des ConcertSe
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Concert } from '../../models/concert.model';
+import { ConcertFormComponent } from '../../components/concert-form/concert-form';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, DatePipe], // Import des RouterLink-Moduls, um Navigation innerhalb der Anwendung zu ermöglichen
+  imports: [RouterLink, DatePipe, ConcertFormComponent], // Import des RouterLink-Moduls, um Navigation innerhalb der Anwendung zu ermöglichen
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -19,6 +20,9 @@ export class HomeComponent {
 
   // Neues Signal für die Texteingabe in der Suchleiste
   searchQuery = signal<string>('');
+
+  // signal für Konzert, das gerade bearbeitet wird (null=neues Konzert anlegen)
+  selectedConcertForEdit = signal<Concert | null>(null);
 
  // Berechnetes, schreibgeschütztes Signal, das die Konzerte als Liste basierend auf dem ausgewählten Filter zurückgibt
   filteredConcerts = computed(() => {
@@ -55,10 +59,34 @@ export class HomeComponent {
     this.searchQuery.set(inputElement.value);
   }
 
+  // Wird aufgerufen, wenn der Nutzer im Formular auf "Speichern" / "Aktualisieren" klickt
+  onSaveConcert(formData: Omit<Concert, 'id' | 'isPast'>): void {
+    const currentEdit = this.selectedConcertForEdit();
+
+    if (currentEdit) {
+      // Modus: Bearbeiten -> Update an Backend
+      this.concertService.updateConcert(currentEdit.id, formData);
+      this.selectedConcertForEdit.set(null); // Formular wieder in "Anlegen"-Modus zurücksetzen
+    } else {
+      // Modus: Neu anlegen -> Add an Backend
+      this.concertService.addConcert(formData);
+    }
+  }
+
+  // Wird aufgerufen, wenn der Nutzer bei einem Konzert auf "Bearbeiten" klickt
+  onEdit(concert: Concert): void {
+    this.selectedConcertForEdit.set(concert);
+  }
+
   onDelete(concertId: string): void {
-      if (confirm('Möchtest du dieses Konzert wirklich löschen?')) { // Browsereigene Funktion mit Bestätigungsabfrage, um versehentliches Löschen zu verhindern
-        this.concertService.deleteConcert(concertId);
+    if (confirm('Möchtest du dieses Konzert wirklich löschen?')) {
+      this.concertService.deleteConcert(concertId);
+      
+      // Falls das gerade bearbeitete Konzert gelöscht wird, Bearbeiten abbrechen
+      if (this.selectedConcertForEdit()?.id === concertId) {
+        this.selectedConcertForEdit.set(null);
       }
     }
+  }
 
 }
