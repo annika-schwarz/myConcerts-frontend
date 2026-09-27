@@ -49,6 +49,8 @@ export class ConcertFormComponent {
           rating: data.rating ?? null, // null, wenn keine Bewertung vorhanden ist
           comment: data.comment || '' // leerer String, wenn kein Kommentar vorhanden ist
         });
+      } else {
+        this.concertForm.reset(); // wenn initialData=null Formular für neues Konzert leeren
       }
     });
   }
