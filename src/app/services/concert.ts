@@ -66,27 +66,24 @@ export class ConcertService {
   }
 
   // Methode zum Abrufen eines Konzerts anhand der ID (ohne HTTP-Anfrage)
-  getConcertById(concertID: string): Concert | undefined {
-    return this.concerts().find(concert => concert.id === concertID);
+  getConcertById(concertID: string): Concert | undefined {    // Übergabe einer Konzert-ID, Rückgabe Concert oder undefined
+    return this.concerts().find(concert => concert.id === concertID);   // Array-Methode(JS) find um Concert mit übergebenen ID zu finden und zurückzugeben 
   }
-
 
   // Methode zum Aktualisieren eines bestehenden Konzerts
   updateConcert(id: string, updatedData: Partial<Omit<Concert, 'id'>>): void {  //geschachtelter TypeScript Utility Type: Omit<Concert, 'id'> erstellt Typ, der alle Eigenschaften von Concert enthält, außer 'id'. Partial<Omit<Concert, 'id'>> macht alle Eigenschaften optional (?), sodass nur die zu aktualisierenden Felder übergeben werden müssen.
-    const today = new Date().toISOString().split('T')[0];
-
-    this.concerts.update(currentConcerts =>
-      currentConcerts.map(concert => {    // geht durch jedes Konzert im aktuellen Signal und prüft, ob die ID übereinstimmt.
-        if (concert.id === id) {
-          const updatedConcert = { ...concert, ...updatedData };    // Wenn ja, wird das Konzert mit den neuen Daten aktualisiert, andernfalls bleibt es unverändert.
-          updatedConcert.isPast = (updatedConcert.date < today);    // isPast (true/false) wird neu berechnet für den Fall, dass das Datum geändert wurde
-          return updatedConcert;
-        }
-        return concert;
-      })
-    );
-  }
-
+    this.http.put<Concert>(`${this.apiUrl}/${id}`, updatedData).subscribe({
+      next: (updatedConcert) => {
+        console.log('Konzert erfolgreich aktualisiert:', updatedConcert);
+        this.concerts.update(currentConcerts =>
+          currentConcerts.map(c => c.id === id ? updatedConcert : c)    // Ternärer Operator: gehe Array durch und baue neues, wenn Id = updatedConcert.id dann nimm dieses ansonsten altes um neues Array zu bauen
+        );
+      },
+      error: (err) => {
+        console.error('Fehler beim Aktualisieren des Konzerts:', err)
+      }
+    });
+  }  
 
   // Methode zum Löschen eines Konzerts aus dem Signal anhand der ID
   deleteConcert(concertId: string): void {
