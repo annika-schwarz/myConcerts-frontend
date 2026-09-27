@@ -116,7 +116,7 @@
             </div>
 
             <!-- Haupt-Act & Vorbands -->
-            <h5 class="card-title text-primary fw-bold mb-1">{{ concert.artist }}</h5>
+            <h5 class="card-title text-white fw-bold mb-1">{{ concert.artist }}</h5>
             @if (concert.supportActs) {
               <h6 class="card-subtitle text-muted mb-3 small">
                 Support: {{ concert.supportActs }}
@@ -127,18 +127,23 @@
 
             <!-- Veranstaltungsort -->
             <p class="card-text mb-2 text-secondary">
-              📍 <strong>Ort:</strong> {{ concert.venue || 'Kein Ort angegeben' }}
+              📍<span class="text-muted"> {{ concert.venue || 'Kein Ort angegeben' }} </span>
             </p>
 
             <!-- Bewertung & Kommentar (nur wenn vergangen) -->
             @if (concert.isPast) {
-              <div class="mt-auto pt-3 border-top">
+              <div class="mt-auto pt-3 border-top border-white-10">
                 @if (concert.rating) {
-                  <div class="text-warning mb-1">
-                    @for (star of [1, 2, 3, 4, 5]; track star) {
-                      <span [class.text-muted]="star > concert.rating">★</span>
-                    }
-                    <span class="ms-1 small text-dark fw-bold">({{ concert.rating }}/5)</span>
+                  <div class="d-flex align-items-center mb-1">
+                    <div class="star-rating me-2">
+                      @for (star of [1, 2, 3, 4, 5]; track star) {
+                        <span [class.star-filled]="star <= concert.rating" 
+                              [class.star-empty]="star > concert.rating">
+                          ★
+                        </span>
+                      }
+                    </div>
+                    <span class="small text-light fw-bold">({{ concert.rating }}/5)</span>
                   </div>
                 }
                 @if (concert.comment) {
@@ -149,18 +154,18 @@
               </div>
             }
 
-            <!-- Card Actions -->
-            <div class="d-flex justify-content-end gap-2 mt-3 pt-2 border-top">
-              <a [routerLink]="['/edit', concert.id]" class="btn btn-outline-secondary btn-sm">
-                Bearbeiten
-              </a>
-              <button 
-                type="button" 
-                class="btn btn-outline-danger btn-sm"
-                (click)="onDelete(concert.id)">
-                Löschen
-              </button>
-            </div>
+            <!-- Card Actions (Gläserne & Neonglühende Buttons) -->
+  <div class="d-flex justify-content-end gap-2 mt-3 pt-2 border-top border-white-10">
+    <a [routerLink]="['/edit', concert.id]" class="btn btn-outline-glass btn-sm">
+      Bearbeiten
+    </a>
+    <button 
+      type="button" 
+      class="btn btn-outline-danger-dark btn-sm"
+      (click)="onDelete(concert.id)">
+      Löschen
+    </button>
+  </div>
 
           </div>
         </div>

@@ -1,0 +1,170 @@
+/* Google Font laden für modernen, edlen Look */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+:root {
+  /* Typografie */
+  --bs-body-font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Farb-Gradients */
+  --bg-gradient: linear-gradient(135deg, #0f0c1b 0%, #181028 50%, #0d0a14 100%);
+  --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --primary-gradient: linear-gradient(135deg, #ff2a5f 0%, #8a2be2 100%);
+  --primary-gradient-hover: linear-gradient(135deg, #ff4d7a 0%, #a044ff 100%);
+
+  /* Bootstrap Variable Overrides */
+  --bs-body-bg: #0f0c1b;
+  --bs-body-color: #f1f1f5;
+  --bs-primary: #ff2a5f;
+  --bs-border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Gesamter Hintergrund mit sanftem, tiefem Verlauf */
+body {
+  background: var(--bg-gradient) !important;
+  background-attachment: fixed !important;
+  color: var(--bs-body-color);
+  min-height: 100vh;
+}
+
+/* Glassmorphism / Gradient Cards */
+.card, .concert-card, .filter-card {
+  background: var(--card-gradient) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Glowing Gradient Hover-Effekte für Konzertkarten */
+.concert-card:hover, .filter-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 42, 95, 0.5) !important;
+  box-shadow: 0 10px 30px -10px rgba(255, 42, 95, 0.3),
+              0 0 15px rgba(138, 43, 226, 0.2) !important;
+}
+
+/* Aktive Filter-Kachel mit Neon-Gradient Accent */
+.active-filter {
+  border-image: var(--primary-gradient) 1 !important;
+  border: 1px solid transparent !important;
+  background: linear-gradient(145deg, rgba(255, 42, 95, 0.15) 0%, rgba(138, 43, 226, 0.15) 100%) !important;
+  box-shadow: 0 0 20px rgba(255, 42, 95, 0.25) !important;
+}
+
+/* Gradient Buttons */
+.btn-primary {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(255, 42, 95, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-gradient-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 42, 95, 0.5);
+}
+
+/* Eingabefelder mit transparentem Gradient-Design */
+.form-control, .form-select, .input-group-text {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+  backdrop-filter: blur(8px);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #ff2a5f !important;
+  box-shadow: 0 0 12px rgba(255, 42, 95, 0.3) !important;
+}
+
+/* Badges / Labels mit leichtem Glanz */
+.badge.bg-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+.badge.bg-secondary {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Container für die Sterne-Bewertung */
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Aktive Sterne: Neon-Grün Gradient + Poison-Glow */
+.star-rating .star-filled {
+  /* Farbverlauf von knalligem Neon-Grün zu Smaragd/Lime */
+  background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Mehrstufiger Neongrüner Glow-Effekt */
+  filter: drop-shadow(0 0 3px rgba(0, 255, 135, 0.9))
+          drop-shadow(0 0 8px rgba(0, 255, 135, 0.6));
+  
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+/* Inaktive Sterne (dezent im Hintergrund) */
+.star-rating .star-empty {
+  color: rgba(255, 255, 255, 0.15) !important;
+  font-size: 1.1rem;
+}
+
+/* Datum: Scharfes, kühles Silber/Weiß mit leichtem Glow */
+.concert-date {
+  color: #e2e8f0 !important;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Ort: Bessere Lesbarkeit & leuchtendes Pin-Icon */
+.concert-venue {
+  color: #cbd5e1 !important;
+  font-size: 0.95rem;
+}
+
+.concert-venue .venue-icon {
+  filter: drop-shadow(0 0 4px rgba(255, 42, 95, 0.6));
+}
+
+/* Bearbeiten-Button: Modernes Glassmorphism-Design mit leichtem Hover-Effect */
+.btn-outline-glass {
+  color: #e2e8f0 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-glass:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+/* Löschen-Button: Dezent, aber mit rotem Neon-Glow beim Hover */
+.btn-outline-danger-dark {
+  color: #ff6b8b !important;
+  background: rgba(255, 42, 95, 0.08) !important;
+  border: 1px solid rgba(255, 42, 95, 0.3) !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-danger-dark:hover {
+  color: #fff !important;
+  background: #ff2a5f !important;
+  border-color: #ff2a5f !important;
+  box-shadow: 0 0 12px rgba(255, 42, 95, 0.5);
+  transform: translateY(-1px);
+}
