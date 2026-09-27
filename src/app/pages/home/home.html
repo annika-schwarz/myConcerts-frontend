@@ -127,7 +127,7 @@
 
             <!-- Veranstaltungsort -->
             <p class="card-text mb-2 text-secondary">
-              📍 <strong>Ort:</strong> {{ concert.venue }}
+              📍 <strong>Ort:</strong> {{ concert.venue || 'Kein Ort angegeben' }}
             </p>
 
             <!-- Bewertung & Kommentar (nur wenn vergangen) -->
