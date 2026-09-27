@@ -23,9 +23,9 @@ export class ConcertService {
   // Methode zum Abrufen aller Konzerte im Backend
   loadConcerts(): void {
     this.http.get<Concert[]>(this.apiUrl).subscribe({   // http-GET-Anfrage an Backend-URL, die als Concerts[] typisiert ist, die durch .subscribe() abgeschickt wird
-      // Wenn erfolgreiche Antwort (200 OK etc.) vom Backend
-      next: (data) => {     // next=callback-Funktion, data=vom Backend gesendete JSON-Daten (Concert[]-Objekt)
-        console.log('Daten erfolgreich empfangen:', data);
+      // Wenn erfolgreiche Antwort (200 OK etc.) vom BE
+      next: (data) => {     // next=callback-Funktion, data=vom BE gesendete JSON-Daten (Concert[]-Objekt)
+        console.log('HTTP-Anfrage erfolgreich und Daten erfolgreich vom Backend empfangen:', data);
         this.concerts.set(data);    // this.concerts enthält nun alle Konzerte vom Backend
       },
       // wenn Anfrage fehlschlägt
@@ -41,15 +41,12 @@ export class ConcertService {
   
   // berechnetes (schreibgeschütztes) Signal, das vergangene Konzerte zurückgibt
   pastConcerts = computed(() => {
-    const today = new Date().toISOString().split('T')[0]; // aktuelles Datum im Format YYYY-MM-DD
-    return this.concerts().filter(c => c.date < today); // Filterung der Konzerte, die in der Vergangenheit liegen
+    return this.concerts().filter(c => c.isPast); // Filterung der Konzerte, ob in Vergangenheit (isPast=true--> im BE berechnet)
   })
 
-
-  // berechnetes (schreibgeschütztes) Signal, das zukünftige Konzerte (einschließlich des heutigen Datums) zurückgibt
+  // berechnetes (schreibgeschütztes) Signal, das zukünftige Konzerte (inkl. heute) zurückgibt
   upcomingConcerts = computed(() => {
-    const today = new Date().toISOString().split('T')[0]; // aktuelles Datum im Format YYYY-MM-DD
-    return this.concerts().filter(c => c.date >= today); // Filterung der Konzerte, die in der Zukunft (+ heutiges Datum) liegen
+    return this.concerts().filter(c => !c.isPast); // Filterung der Konzerte, ob in Zukunft (inkl. heute) (isPast=false==!isPast --> im BE berechnet)
   })
 
 
