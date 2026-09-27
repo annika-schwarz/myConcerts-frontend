@@ -60,7 +60,7 @@ export class ConcertService {
       },
       // wenn Fehler
       error: (err) => {
-        console.log('Fehler beim Hinzufügen des Konzerts:', err);
+        console.error('Fehler beim Hinzufügen des Konzerts:', err);
       }
     });
   }
@@ -87,19 +87,29 @@ export class ConcertService {
 
   // Methode zum Löschen eines Konzerts aus dem Signal anhand der ID
   deleteConcert(concertId: string): void {
-    this.concerts.update(currentConcerts =>
-      currentConcerts.filter(c => c.id !== concertId) // filtert das Konzert mit der angegebenen ID heraus und erstellt ein neues Array ohne dieses Konzertgi
-      
-    );
+    this.http.delete(`${this.apiUrl}/${concertId}`).subscribe({   // Zusammenbau URL localhost:3000/:id
+      next: () => {
+        console.log(`Konzert mit ID ${concertId} erfolgreich gelöscht`)
+        this.concerts.update(currentConcerts =>
+          currentConcerts.filter(c => c.id !== concertId )    // geht Array durch und baut neues auf, nimmt nur Concerts auf, die nicht concertID entsprechen
+        )
+      },
+      error: (err) => {
+        console.error('Fehler beim Löschen des Konzerts', err)
+      }
+    }); 
   }
 
-// Berechnetes Signal für den Bewertungsschnitt aller bewerteten Konzerte
+// Berechnetes Signal für den Bewertungsschnitt aller bewerteten Konzerte (ohne HTTP-Anfrage)
 averageRating = computed(() => {
-  const ratedConcerts = this.concerts().filter(c => c.rating !== undefined && c.rating !== null); // Filtert nur die Konzerte, die eine Bewertung haben
-  if (ratedConcerts.length === 0) {             // Wenn keine Konzerte bewertet wurden, wird '0.0' zurückgegeben
+  const ratedConcerts = this.concerts()
+    .filter(c => c.rating !== undefined  // Filtert Konzerte ins neue Array, die eine Bewertung haben
+      && c.rating !== null && c.rating > 0);  // und deren Bewertung über 0 (sonst Verzerrung des Durchschnitts) und nicht null sind
+  if (ratedConcerts.length === 0) { // Wenn keine Konzerte bewertet (Array.length=0) wurden, wird '0.0' zurückgegeben
     return '0.0';
   }
-  const sum = ratedConcerts.reduce((currentSum, c) => currentSum + (c.rating ?? 0), 0);   // Berechnung der Summe der Bewertungen, wobei undefined oder null als 0 behandelt wird, ?? ist der Nullish Coalescing Operator, der den rechten Wert zurückgibt, wenn der linke Wert null oder undefined ist
+  const sum = ratedConcerts.reduce(     // Berechnung der Summe der Bewertungen,
+    (currentSum, c) => currentSum + (c.rating ?? 0), 0);   // undefined oder null als 0 behandelt, ??=Nullish Coalescing Operator: default: gibt linken Wert zurück, wenn null/undefined, dann rechten Wert, Startwert für currentSum ,0)
   return (sum / ratedConcerts.length).toFixed(1); // Umwandlung in einen String (.toFixed(1)) mit 1 Nachkommastelle
 });
 
