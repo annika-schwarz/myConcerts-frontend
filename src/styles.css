@@ -78,7 +78,7 @@ body {
 }
 
 .form-control:focus, .form-select:focus {
-  border-color: #ff2a5f !important;
+  border-color: #8a2be2 !important;
   box-shadow: 0 0 12px rgba(255, 42, 95, 0.3) !important;
 }
 
@@ -148,8 +148,9 @@ body {
 
 .btn-outline-glass:hover {
   color: #fff !important;
-  background: rgba(255, 255, 255, 0.15) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  background: #8a2be2 !important; /* Lila-Farbton vom Gradienten-Button */
+  border-color: #8a2be2 !important;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5) !important; /* Violetter Glow-Effekt */
   transform: translateY(-1px);
 }
 
@@ -161,10 +162,17 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+/* Wechselt ERST BEIM HOVER in den edlen Lila-Ton des Gradienten */
 .btn-outline-danger-dark:hover {
   color: #fff !important;
-  background: #ff2a5f !important;
-  border-color: #ff2a5f !important;
-  box-shadow: 0 0 12px rgba(255, 42, 95, 0.5);
+  background: #8a2be2 !important; /* Lila-Farbton vom Gradienten-Button */
+  border-color: #8a2be2 !important;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5) !important; /* Violetter Glow-Effekt */
   transform: translateY(-1px);
+}
+
+/* Exakter Grünton für die Anstehend-Zahl & Akzente */
+.text-upcoming-green {
+  color: #10b981 !important;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); /* Sanfter Glow-Effekt für die Zahl */
 }
