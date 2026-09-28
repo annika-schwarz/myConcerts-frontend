@@ -71,17 +71,24 @@ Abb. 10: Responsives Design Small
 
 ## 🛠️ Verwendete Technologien & KI
 
+### Frontend
 - **Frontend** Angular (Signals, Reactive Forms, Router)
 - **Styling:** Bootstrap 5, Custom CSS
 - **Sprache:** TypeScript, HTML, CSS
 
+### Backend
 - **Backend**: Node.js mit Express.js
 - **Datenbank**: MongoDB Atlas / Mongoose
 
-- **Verwendung von Google Gemini** (Session-based Context , Iterative Co-Creation):
-    - Brainstorming, Anleitungen und Verständnisfragen
-    - Generierung, Optimierung und Erklärung von Code, Fehlersuche
-    - Unterstützung bei READ.ME
+### Entwicklungsumgebung & Tools
+- **IDE / Editor:** [Visual Studio Code](https://code.visualstudio.com/)
+- **API-Testing:** Postman
+- **Versionsverwaltung:** Git & GitHub
+
+### Verwendung von Google Gemini (Session-based Context , Iterative Co-Creation):
+- Brainstorming, Anleitungen und Verständnisfragen
+- Generierung, Optimierung und Erklärung von Code, Fehlersuche
+- Unterstützung bei READ.ME
 
 ---
 
@@ -89,17 +96,61 @@ Abb. 10: Responsives Design Small
 
 ### Voraussetzungen
 
-* [Node.js](https://nodejs.org/) (Version 18 oder höher)
-* [npm](https://www.npmjs.com/) (wird mit Node.js installiert)
-* [Git](https://git-scm.com/)
-* Ein kostenloser Account bei [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (für den Datenbank-Zugriff)
+- [Node.js](https://nodejs.org/) (Version 18 oder höher)
+- [npm](https://www.npmjs.com/) (wird mit Node.js installiert)
+- [Git](https://git-scm.com/)
+- Ein kostenloser Account bei [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (für den Datenbank-Zugriff)
 
-#### 1. Repositories klonen
+### 0. Ordnerablage erstellen
+Erstelle auf deinem Rechner einen Ordner (z. B. `myConcerts-App`) und öffne diesen in Visual Studio Code.
+
+#### 1. Backend-Repository klonen
+Öffne das VS Code Terminal (`Strg + Shift + '` bzw. `Cmd + Shift + '`) und klone das Backend:
+
 ```bash
-git clone [https://github.com/annika-schwarz/MyConcerts-frontend.git](https://github.com/DEIN-BENUTZERNAME/MyConcerts.git)
-git clone [https://github.com/annika-schwarz/MyConcerts-frontend.git](https://github.com/DEIN-BENUTZERNAME/MyConcerts.git)
-cd MyConcerts
+git clone https://github.com/annika-schwarz/myConcerts-backend.git
+```
 
+### 2. Backend einrichten und starten
 
+```bash
+cd myConcerts-backend
+npm install
+````
 
-## Next Steps
+Erstelle im Ordner MyConcerts-backend eine neue Datei namens .env und trage folgendes ein:
+
+```bash
+PORT=3000
+MONGODB_URI=dein_mongodb_atlas_connection_string
+```
+
+```bash
+npm start
+```
+Das Backend läuft nun unter http://localhost:3000.
+
+### 3. Frontend-Repository klonen
+Öffne ein zweites VS Code-Fenster mit deinem Hauptordner (myConcerts-App), öffne dort das Terminal und klone das Frontend:
+
+```bash
+git clone https://github.com/annika-schwarz/myConcerts-frontend.git
+```
+
+### 4. Fontend einrichten und starten
+```bash
+cd myConcerts-frontend
+npm install
+npm start
+```
+Öffne deinen Browser und rufe folgende Adresse auf: http://localhost:4200
+
+---
+
+## 🔮 Ausblick & Next Steps
+
+- **UX-Optimierung im Formular:** Automatisches Deaktivieren (Ausgrauen) von Bewertung und Notizen, solange kein Datum oder ein Datum in der Zukunft ausgewählt ist.
+- **Festival-Modul:** Erweiterung des Datenmodells zur Erfassung und Verwaltung von mehrteiligen/mehrtägigen Festivals.
+- **Benutzerverwaltung:** Authentifizierungssystem mit Registrierung, Login und geschütztem User-Bereich.
+- **Setlist.fm-Integration:** Automatische Abfrage und Anzeige von Setlisten über die externe Setlist.fm API.
+- **Branding & Feinschliff:** Einbindung eines benutzerdefinierten Favicons und weitere UI-Optimierungen.
