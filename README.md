@@ -16,7 +16,7 @@
 
 - **Echtzeit-Suchleiste:** Durchsucht Künstler/Bands, Support-Acts und Veranstaltungsorte gleichzeitig.
 
-- **Konzert-Verwaltung (CRUD: **C**reate/Erstellen, **R**ead/Anzeigen, **U**pdate/Bearbeiten, **D**elete/Löschen):**
+- **Konzert-Verwaltung** (CRUD: **C**reate/Erstellen, **R**ead/Anzeigen, **U**pdate/Bearbeiten, **D**elete/Löschen):
 
     - **Hinzufügen & Bearbeiten:** Eingabemaske mit Pflicht- & Optionalfeldern für Hauptact, Support-Acts, Location, Datum (Browser-nativer HTML5-Datepicker) sowie ein 1–5-Sterne-Bewertungssystem und Notizen für vergangene Events.
 
@@ -29,7 +29,7 @@
 ## 📸 Screenshots
 
 ![](public/assets/images/2026-09-28-21-40-18.png)
-Abb. 1: Startseite mit Dashboard (Anzahl Einträge pro Kategorie: Gesamt, Anstehnd, Vergangen), Suchleiste und chronologisch aufgeführten Konzerteinträgen sowie Button zum Erstellen eines Eintrags
+Abb. 1: Startseite mit Dashboard (Anzahl Einträge pro Kategorie: Gesamt, Anstehend, Vergangen: hier zusätzlich durschnittliche Bewertung), Suchleiste und chronologisch aufgeführten Konzerteinträgen sowie Button zum Erstellen eines Eintrags
 
 
 ![](public/assets/images/2026-09-28-21-54-58.png)
@@ -61,10 +61,12 @@ Abb. 8: Dialog beim Löschen eines Konzerteintrags
 
 
 ![](public/assets/images/2026-09-28-23-00-15.png)
+
 Abb. 9: Responsives Design Medium
 
 
 ![](public/assets/images/2026-09-28-23-01-54.png)
+
 Abb. 10: Responsives Design Small
 
 ---
