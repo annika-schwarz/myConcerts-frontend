@@ -70,7 +70,7 @@ body {
 }
 
 /* Eingabefelder mit transparentem Gradient-Design */
-.form-control, .form-select, .input-group-text {
+.form-control, .input-group-text {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #fff !important;
@@ -120,22 +120,9 @@ body {
   font-size: 1.1rem;
 }
 
-/* Datum: Scharfes, kühles Silber/Weiß mit leichtem Glow */
-.concert-date {
-  color: #e2e8f0 !important;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-}
 
-/* Ort: Bessere Lesbarkeit & leuchtendes Pin-Icon */
-.concert-venue {
-  color: #cbd5e1 !important;
-  font-size: 0.95rem;
-}
 
-.concert-venue .venue-icon {
-  filter: drop-shadow(0 0 4px rgba(255, 42, 95, 0.6));
-}
+
 
 /* Bearbeiten-Button: Modernes Glassmorphism-Design mit leichtem Hover-Effect */
 .btn-outline-glass {
