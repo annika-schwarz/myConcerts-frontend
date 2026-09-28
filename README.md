@@ -1,59 +1,52 @@
-# MyConcerts
+# MyConcerts App 🎵
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+## Beschreibung
 
-## Development server
+**MyConcerts** ist eine moderne Webanwendung zur übersichtlichen Verwaltung und Bewertung von Live-Konzerten. Die Anwendung ermöglicht es Musikbegeisterten, anstehende Events zu planen sowie vergangene Konzerterlebnisse mit Bewertungen und persönlichen Erinnerungen festzuhalten.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Chronologische Kachelansicht:** Automatische Sortierung aller Konzerte nach Datum (von der Zukunft bis in die Vergangenheit).
+- **Visuelle Status-Badges:** Klare Unterscheidung zwischen anstehenden (neongrün) und vergangenen Konzerten (dezentes silber).
+- **Dashboard & Filter:** Live-Kennzahlen zur Gesamtanzahl sowie Aufteilung in zukünftige und vergangene Events inkl. Schnellfilterung über das Dashboard.
+- **Echtzeit-Suchleiste:** Durchsucht Künstler/Bands, Support-Acts und Veranstaltungsorte gleichzeitig.
+- **Konzert-Verwaltung (CRUD: **C**reate/Erstellen, **R**ead/Anzeigen, **U**pdate/Bearbeiten, **D**elete/Löschen):**
+    - **Hinzufügen & Bearbeiten:** Eingabemaske mit Pflicht- & Optionalfeldern für Hauptact, Support-Acts, Location, Datum (Browser-Nativer HTML5-Datepicker) sowie ein 1–5-Sterne-Bewertungssystem und Notizen für vergangene Events.
+    - **Sicheres Löschen:** Löschfunktion mit Bestätigungsdialog zum Schutz vor versehentlichem Entfernen.
+- **Responsive Design:** Optimierte Darstellung für Desktop, Tablet und Smartphones umgesetzt mit Bootstrap.   
 
-## Code scaffolding
+## 📸 Screenshots
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Startseite | Formular |
+|:---:|:---:|
+| <!-- Hier Bild 1 einfügen --> | <!-- Hier Bild 2 einfügen --> |
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ✨ Features
 
-```bash
-ng generate --help
-```
+- **Konzertübersicht:** Alle vergangenen und zukünftigen Konzerte im Überblick.
+- **Suchen & Filtern:** Schnelles Filtern nach Künstlern, Orten oder Daten.
+- **Konzert hinzufügen & bearbeiten:** Erfassen von Künstlern, Support-Acts, Event-Orten und Daten.
+- **Bewertungssystem:** Sterne-Bewertung und Notizen für besuchte Konzerte.
+- **Responsive Design:** Optimiert für Desktop und mobile Endgeräte.
 
-## Building
+---
 
-To build the project run:
+## 🛠️ Verwendete Technologien & KI-Einsatz
 
-```bash
-ng build
-```
+- **Framework:** Angular (Signals, Reactive Forms, Router)
+- **Styling:** Bootstrap 5, Custom CSS
+- **Sprache:** TypeScript, HTML, CSS
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🚀 Lokales Setup
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+1. **Repository klonen:**
+   ```bash
+   git clone <DEIN_GIT_REPOSITORY_LINK>
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![](public/assets/images/2026-09-28-18-00-10.png)
