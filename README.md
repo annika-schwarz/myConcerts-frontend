@@ -27,8 +27,10 @@
 ## 📸 Screenshots
 
 ![](public/assets/images/2026-09-28-21-40-18.png)
-| Startseite mit Dashboard, Suchleiste und chronologisch aufgeführten Konzerteinträgen|
+| Startseite mit Dashboard, Suchleiste und chronologisch aufgeführten Konzerteinträgen |
 
+![](public/assets/images/2026-09-28-21-54-58.png)
+| Filterung der angezeigten Konzerteinträge über Dashboard |
  | Formular |
 |:---:|:---:|
 | <!-- Hier Bild 1 einfügen --> | <!-- Hier Bild 2 einfügen --> |
