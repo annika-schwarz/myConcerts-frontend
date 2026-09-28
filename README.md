@@ -18,7 +18,7 @@
 
 - **Konzert-Verwaltung (CRUD: **C**reate/Erstellen, **R**ead/Anzeigen, **U**pdate/Bearbeiten, **D**elete/Löschen):**
 
-    - **Hinzufügen & Bearbeiten:** Eingabemaske mit Pflicht- & Optionalfeldern für Hauptact, Support-Acts, Location, Datum (Browser-Nativer HTML5-Datepicker) sowie ein 1–5-Sterne-Bewertungssystem und Notizen für vergangene Events.
+    - **Hinzufügen & Bearbeiten:** Eingabemaske mit Pflicht- & Optionalfeldern für Hauptact, Support-Acts, Location, Datum (Browser-nativer HTML5-Datepicker) sowie ein 1–5-Sterne-Bewertungssystem und Notizen für vergangene Events.
 
     - **Sicheres Löschen:** Löschfunktion mit Bestätigungsdialog zum Schutz vor versehentlichem Entfernen.
     
@@ -27,13 +27,28 @@
 ## 📸 Screenshots
 
 ![](public/assets/images/2026-09-28-21-40-18.png)
-| Startseite mit Dashboard, Suchleiste und chronologisch aufgeführten Konzerteinträgen |
+| Startseite mit Dashboard, Suchleiste und chronologisch aufgeführten Konzerteinträgen sowie Button zum Erstellen eines Eintrags|
 
 ![](public/assets/images/2026-09-28-21-54-58.png)
 | Filterung der angezeigten Konzerteinträge über Dashboard |
- | Formular |
-|:---:|:---:|
-| <!-- Hier Bild 1 einfügen --> | <!-- Hier Bild 2 einfügen --> |
+
+![](public/assets/images/2026-09-28-22-24-23.png)
+| Filterung der angezeigten Konzerteinträge nach Übereinstimmung der Eingabe in der Suchleiste mit Hauptact, Support Acts oder Veranstaltungsort |
+
+![](public/assets/images/2026-09-28-22-28-35.png)
+| Anzeige "Keine Konzerte gefunden, wenn keine Übereinstimmung der Eingabe in der Suchleiste mit Hauptact, Support Acts oder Veranstaltungsort (entspricht der Anzeige, wenn noch keine onzerte vorhanden) |
+
+![](public/assets/images/2026-09-28-22-32-58.png)
+|Komponente zum Erstellen eines Konzerteintrags (selber Aufbau für die Bearbeiten-Komponente) mit 2 Pflichtfelder ohne deren Eingabe Speichern nicht möglich ist |
+
+![](public/assets/images/2026-09-28-22-37-46.png)
+| Browser-nativer HTML5-Datepicker, um ein Datum auszuwählen |
+
+![](public/assets/images/2026-09-28-22-42-28.png)
+| Vergabe einer Bewertung von 1 bis 5 Sternen (Sterne reagieren interaktiv auf Klick) |
+
+ ![](public/assets/images/2026-09-28-22-46-01.png)
+| Dialog beim Löschen eines Konzerteintrags | 
 
 ---
 
