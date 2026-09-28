@@ -26,8 +26,10 @@
 
 ## 📸 Screenshots
 
-![App Vorschau](./public/assets/images/myConcerts_Concert-Card_Hover.gif)
-| Startseite | Formular |
+![](public/assets/images/2026-09-28-21-40-18.png)
+| Startseite mit Dashboard, Suchleiste und chronologisch aufgeführten Konzerteinträgen|
+
+ | Formular |
 |:---:|:---:|
 | <!-- Hier Bild 1 einfügen --> | <!-- Hier Bild 2 einfügen --> |
 
