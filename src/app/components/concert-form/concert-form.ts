@@ -28,10 +28,10 @@ export class ConcertFormComponent {
   // initial leer (''), Validators.required = Pflichtfeld, muss ausgefüllt werden
   // Validators gibt null zurück, wenn das Feld korrekt ausgefüllt ist, ansonsten ein Objekt mit dem Fehler
   concertForm = this.formbuilder.nonNullable.group({
-    artist: ['', Validators.required],
+    artist: ['', Validators.required], // Pflichtfeld
     supportActs: [''],
     venue: [''],
-    date: ['', Validators.required],
+    date: ['', Validators.required], // Pfichtfeld
     rating: [null as number | null, [Validators.min(1), Validators.max(5)]], // min und max für die Bewertung
     comment: ['']
   });

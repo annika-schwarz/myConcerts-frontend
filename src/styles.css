@@ -9,7 +9,7 @@
   --bg-gradient: linear-gradient(135deg, #0f0c1b 0%, #181028 50%, #0d0a14 100%);
   --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
   --primary-gradient: linear-gradient(135deg, #ff2a5f 0%, #8a2be2 100%);
-  --primary-gradient-hover: linear-gradient(135deg, #ff4d7a 0%, #a044ff 100%);
+  --primary-gradient-hover: linear-gradient(135deg, #ff4d7a 0%, #a044ff 100%);  /* Hovereffekt + Konzernt eintragen Button */
 
   /* Bootstrap Variable Overrides */
   --bs-body-bg: #0f0c1b;

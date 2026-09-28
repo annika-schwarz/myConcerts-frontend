@@ -13,14 +13,20 @@
 - **Visuelle Status-Badges:** Klare Unterscheidung zwischen anstehenden (neongrün) und vergangenen Konzerten (dezentes silber).
 
 - **Dashboard & Filter:** Live-Kennzahlen zur Gesamtanzahl sowie Aufteilung in zukünftige und vergangene Events inkl. Schnellfilterung über das Dashboard.
+
 - **Echtzeit-Suchleiste:** Durchsucht Künstler/Bands, Support-Acts und Veranstaltungsorte gleichzeitig.
+
 - **Konzert-Verwaltung (CRUD: **C**reate/Erstellen, **R**ead/Anzeigen, **U**pdate/Bearbeiten, **D**elete/Löschen):**
+
     - **Hinzufügen & Bearbeiten:** Eingabemaske mit Pflicht- & Optionalfeldern für Hauptact, Support-Acts, Location, Datum (Browser-Nativer HTML5-Datepicker) sowie ein 1–5-Sterne-Bewertungssystem und Notizen für vergangene Events.
+
     - **Sicheres Löschen:** Löschfunktion mit Bestätigungsdialog zum Schutz vor versehentlichem Entfernen.
+    
 - **Responsive Design:** Optimierte Darstellung für Desktop, Tablet und Smartphones umgesetzt mit Bootstrap.   
 
 ## 📸 Screenshots
 
+![App Vorschau](./public/assets/images/myConcerts_Concert-Card_Hover.gif)
 | Startseite | Formular |
 |:---:|:---:|
 | <!-- Hier Bild 1 einfügen --> | <!-- Hier Bild 2 einfügen --> |
@@ -52,3 +58,5 @@
    git clone <DEIN_GIT_REPOSITORY_LINK>
 
 ![](public/assets/images/2026-09-28-18-00-10.png)
+
+## Next Steps
